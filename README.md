@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Trying pushing java file
 
 Try push 4
@@ -5,6 +6,9 @@ Try push 4
 Try push 3
 Try push 2
 Try push
+=======
+
+>>>>>>> 77cfd18cc5fdae2f9e15d375503db5e1701f23ef
 # fcourselego
 Lego Project Foundation's Course
 
