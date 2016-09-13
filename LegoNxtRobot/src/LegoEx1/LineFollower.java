@@ -39,7 +39,7 @@ public class LineFollower {
 			
 		}else if(error == -1){
 			l_speed = left_m;
-			r_speed = right_m + P ;
+			r_speed = (right_m + P);
 			turn_left();
 		}else if(error == 1){
 /*			if (last_error == 0){
@@ -47,15 +47,16 @@ public class LineFollower {
 				l_speed = left_m;
 				r_speed = right_m - P;
 			}else {*/
-				l_speed = left_m - P;
+				l_speed = (left_m - P);
 				r_speed = right_m;
 				turn_right();
 			/*}*/
-		}else if(error == 2){
+		}
+		/*else if(error == 2){
 			l_speed = left_m + P;
 			r_speed = right_m;
 			turn_left();
-		}
+		}*/
 		//System.out.println(l_speed+"++"+r_speed);
 		//Delay.msDelay(200);
 		Motor.A.setSpeed(l_speed);
@@ -103,28 +104,28 @@ public class LineFollower {
 		}else{
 			ss2=1;
 		}
-		System.out.println("S1 ="+ss1);
-		System.out.println("S2 = "+ss2);
+//		System.out.println("S1 ="+ss1);
+	//	System.out.println("S2 = "+ss2);
 	//	System.out.println("S1 ="+s1.readValue());
 	//	System.out.println("S2 = "+s1.readValue());
 		sensor=0+0+ss2*4+ss1*8;
-		System.out.println("Sensor= "+sensor);
+	//	System.out.println("Sensor= "+sensor);
 //		System.out.println("test =" +0b1100);
 	}
 	public void tracking(){
 		set_sensor();
 		//last_error=0;
-		int pv = 0, sp = 0, error, kp = 150;
-		int left_speed = 400, right_speed = 400;
+		int pv = 0, sp = 0, error, kp = 100;
+		int left_speed = 300, right_speed = 300;
 		switch(sensor){
 		case 0b0000 : //all black
 			pv = 1;
 			break;
-		case 0b0100 : //
+		case 0b1000 : //
 			pv = 1;
 			//move_forward(left_speed, right_speed - P*2, pv);
 			break;
-		case 0b1000 : //left is white
+		case 0b0100 : //left is white
 			pv = 0;
 			break;
 		case 0b1100 : //turn_right
@@ -147,7 +148,7 @@ public class LineFollower {
 		LineFollower lego = new LineFollower();
 		while(true){
 			lego.set_sensor();
-//			lego.tracking();
+			lego.tracking();
 			//Motor.A.setSpeed(300);
 			//Delay.msDelay(200);
 			//Motor.A.forward();
